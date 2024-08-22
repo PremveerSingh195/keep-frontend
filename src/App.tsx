@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import axios from 'axios'
+
+interface joke {
+  id: number,
+  joke : string,
+  description : string
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [jokes, setJokes] = useState<joke[]>([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/jokes')
+      .then((response) => {
+        setJokes(response.data)
+      }).catch((error)=> {
+        console.log(error);
+        
+      })
+  }, [])
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div >
+      <h1 className='text-xl text-red-600'>hello world !</h1>
+      <div className=''>
+        {jokes.map((joke)=> (
+          <div key={joke.id}>
+            <h3>{joke.joke}</h3>
+            <p>{joke.description}</p>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
