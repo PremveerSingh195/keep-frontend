@@ -9,10 +9,9 @@ function App() {
      <Routes>
       <Route path='/signup' element={<SignupPage/>}/>
       <Route path='/' element={<HomePage/>}/>
-      <Route path='/login' element={<Login/>} />
+      <Route path='/login' element={<Login/>}/>
      </Routes>
      </BrowserRouter>
   )
 }
-
 export default App
