@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 function Header() {
@@ -8,7 +9,7 @@ function Header() {
       </div>
       <div className="flex flex-row justify-center items-center gap-3">
         <button className="text-xl font-medium hover:bg-[#EFEDEC] py-2 px-4 rounded-lg">Log in</button>
-        <button className="text-xl font-bold hover:bg-[#CF3520] bg-red-500 text-white py-2 px-4 rounded-lg">Start for free</button>
+       <Link to="/signup"><button className="text-xl font-bold hover:bg-[#CF3520] bg-red-500 text-white py-2 px-4 rounded-lg">Start for free</button></Link>
       </div>
     </div>
   )
