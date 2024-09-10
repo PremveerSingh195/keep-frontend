@@ -7,10 +7,10 @@ function SignupPage() {
 
   const navigate = useNavigate()
 
-  const [username , setUsername] = useState("")
-  const [email , setEmail] = useState("")
-  const [fullname , setFullName] = useState("")
-  const [password , setPassword] = useState("")
+  const [userName , setuserName] = useState("")
+  const [email , setemail] = useState("")
+  const [Fullname , setFullname] = useState("")
+  const [password , setpassword] = useState("")
   const [selectedImage , setSelectedImage] = useState<File | null>(null)
 
   const handleImageSelect = ( e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,17 +22,32 @@ function SignupPage() {
   const handleclick = async ()=>{
  
    try {
-    await axios.post('')
+       const formData = new FormData();
+
+       formData.append("userName" ,  userName);
+       formData.append("email" , email);
+       formData.append("Fullname" , Fullname)
+       formData.append("password" , password);
+
+
+       if (selectedImage) {
+        formData.append("avatar" , selectedImage)
+       }
+        
+       await axios.post('/api/v1/users/register' , formData , {
+        headers :{
+          "Content-Type":"multipart/form-data"
+        }
+      
+        
+       })
+       console.log('/api/v1/users/register');
+       navigate("/login")
    } catch (error) {
-    
+     console.log("Error : " , error);
    }
-
-    navigate("/login")
+   
   }
-
-
-
-  
   return (
     <div className="w-screen h-screen flex  justify-center items-center">
       
@@ -40,24 +55,24 @@ function SignupPage() {
         <h1 className="text-xl font-bold text-white">Sign up</h1>
         <InputBox 
         inputtype = "text" 
-        plaveholderinput = "username" 
-        userInput= {username} 
-        onUserInputChange= {(username)=>setUsername(username)}/>
+        plaveholderinput = "userName" 
+        userInput= {userName} 
+        onUserInputChange= {(userName)=>setuserName(userName)}/>
         <InputBox 
         inputtype = "text" 
         plaveholderinput = "email" 
         userInput= {email} 
-        onUserInputChange= {(email)=>setEmail(email)}/>
+        onUserInputChange= {(email)=>setemail(email)}/>
         <InputBox 
         inputtype = "text" 
-        plaveholderinput = "fullname" 
-        userInput= {fullname}
-        onUserInputChange= {(fullname)=>setFullName(fullname)}/>
+        plaveholderinput = "Fullname" 
+        userInput= {Fullname}
+        onUserInputChange= {(Fullname)=>setFullname(Fullname)}/>
         <InputBox 
         inputtype = "password" 
         plaveholderinput = "password" 
         userInput= {password} 
-        onUserInputChange= {(password)=>setPassword(password)}/>
+        onUserInputChange= {(password)=>setpassword(password)}/>
         <input 
         type="file" 
         accept="image/*" 
