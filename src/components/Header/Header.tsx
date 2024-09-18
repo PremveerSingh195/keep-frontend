@@ -8,7 +8,7 @@ function Header() {
         <img src="/Spotify-Logo-Transparent.png" alt="LOGO" className="h-16 w-40"/>
       </div>
       <div className="flex flex-row justify-center items-center gap-3">
-        <button className="text-xl font-medium hover:bg-[#EFEDEC] py-2 px-4 rounded-lg">Log in</button>
+        <Link to="/login"><button className="text-xl font-medium hover:bg-[#EFEDEC] py-2 px-4 rounded-lg">Log in</button></Link>
        <Link to="/signup"><button className="text-xl font-bold hover:bg-[#CF3520] bg-red-500 text-white py-2 px-4 rounded-lg">Start for free</button></Link>
       </div>
     </div>
