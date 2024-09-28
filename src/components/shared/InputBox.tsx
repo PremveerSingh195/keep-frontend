@@ -6,8 +6,6 @@ interface InputBoxtype  {
     userInput : string;
     onUserInputChange : (input : string) => void
 }
-
-
 const InputBox : React.FC<InputBoxtype> = ({
     inputtype,
     plaveholderinput = "",
@@ -18,7 +16,7 @@ const InputBox : React.FC<InputBoxtype> = ({
      <input 
      type={inputtype}
      placeholder={plaveholderinput}
-     className="text-black bg-white h-10 w-60 text-center rounded-md"
+     className="text-black bg-white h-10 w-60 text-center rounded-md border border-black outline-none required:"
      value = {userInput}
      onChange={(e)=> onUserInputChange(e.target.value)}
     />

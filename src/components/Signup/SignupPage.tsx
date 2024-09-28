@@ -44,8 +44,8 @@ function SignupPage() {
     }
   };
   return (
-    <div className="w-screen h-screen flex  justify-center items-center">
-      <div className="w-96 h-96 bg-slate-500 rounded-md flex flex-col justify-center items-center gap-2">
+    <div className="w-screen h-screen flex bg-slate-300   justify-center items-center">
+      <div className="w-96 h-96 bg-white rounded-md flex flex-col justify-center items-center gap-2">
         <h1 className="text-xl font-bold text-white">Sign up</h1>
         <InputBox
           inputtype="text"
@@ -83,7 +83,7 @@ function SignupPage() {
           </div>
         )}
         <button
-          className="text-xl bg-red-600 rounded-xl hover:bg-red-700 text-white p-2 font-semibold"
+          className="text-xl bg-blue-600 rounded-xl hover:bg-blue-700 text-white p-2 font-semibold"
           onClick={handleclick}
         >
           Submit
