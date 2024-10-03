@@ -1,24 +1,17 @@
-import { Route , useNavigate } from "react-router-dom";
-import { getCookie } from "../utils";
+import { Navigate } from "react-router-dom";
 
+import { ReactNode } from "react";
 
-function PrivateRoute = ({ component: Component, ...rest }) => {
+type ChildrenProp = { children: ReactNode };
 
-const accessToken =  getCookie('accessToken')
-const navigate = useNavigate()
+const PrivateRoute = ({ children }: ChildrenProp) => {
+  const accessToken = localStorage.getItem("accessToken");
 
+  if (!accessToken) {
+    return <Navigate to="/login" />;
+  }
 
-  return 
-    <Route
-    {...rest}
-    render = {props => 
-        accessToken ? (
-            <Component {...props}/>
-        ) : (
-           navigate('/login')
-        )
-    }
-    />
-  )
-}
+  return children;
+};
+
 export default PrivateRoute;

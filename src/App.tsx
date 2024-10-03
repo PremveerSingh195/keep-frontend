@@ -1,7 +1,8 @@
 import { BrowserRouter, Route , Routes } from 'react-router-dom'
 import SignupPage from './components/Signup/SignupPage'
 import Login from './components/Login/Login'
-import Home from "./components/Home/Home";
+import { HomePage } from "./components";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -10,7 +11,14 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Home" element={<Home />} />
+        <Route
+          path="/Home-page"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
